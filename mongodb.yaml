@@ -16,5 +16,16 @@
     ansible.builtin.service:
       name: mongod
       state: started 
-      enabled: yes 
+      enabled: yes
+
+  - name: change the config
+    ansible.builtin.copy:
+      path: /etc/mongod.conf
+      regexp: '127.0.0.1'
+      replace: 0.0.0.0
+
+  - name: restart mond service
+    ansible.builtin.service:
+      name: mongod
+      state: restart
 
