@@ -22,9 +22,9 @@
     ansible.builtin.copy:
       path: /etc/mongod.conf
       regexp: '127.0.0.1'
-      replace: 0.0.0.0
+      replace: '0.0.0.0'
 
-  - name: restart mond service
+  - name: restart mongod service
     ansible.builtin.service:
       name: mongod
       state: restart
