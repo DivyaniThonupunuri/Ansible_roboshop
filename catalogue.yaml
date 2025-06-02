@@ -45,12 +45,12 @@
 
   - name: copy catalogue servive to systemd service 
     ansible.builtin.copy:
-    src: catalogue.service
-    dest: /etc/systemd/system/catalogue.service
+      src: catalogue.service
+      dest: /etc/systemd/system/catalogue.service
 
   - name: reload the catalogue service 
     ansible.builtin.systemd_service:
-    daemon-reload: true
+      daemon-reload: true
 
   - name: start the service
     ansible.builtin.service:
