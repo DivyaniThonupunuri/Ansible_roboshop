@@ -4,7 +4,7 @@
   tasks: 
   - name: copying the repo details 
     ansible.builtin.copy:
-      src: rabitmq.repo
+      src: rabbitmq.repo
       dest: /etc/yum.repos.d/rabbitmq.repo
       remote_src: yes
 
