@@ -100,7 +100,7 @@
 # 
   - name: restart shipping 
     tags:
-    - import:
+    - import
     ansible.builtin.service:
       name: shipping
       state: restarted
