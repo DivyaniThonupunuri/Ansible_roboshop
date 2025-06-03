@@ -9,7 +9,7 @@
       remote_src: yes
 
   - name: installing rabbitmq server
-    ansible.builtin.command: rabbitmq-server -y
+    ansible.builtin.command: dnf install rabbitmq-server -y
 
   - name:  start rabbitmq server and enable
     ansible.builtin.service:
