@@ -18,54 +18,54 @@
     - PyMySQL
     - cryptography
 
-  # - name: creating app directory
-    # ansible.builtin.file:
-      # path: /app
-      # state: directory
+  - name: creating app directory
+    ansible.builtin.file:
+      path: /app
+      state: directory
 
-  # - name: create a user
-    # ansible.builtin.user:
-      # name: roboshop
-      # home: /app
-      # shell: /sbin/nologin
-      # system: true
+  - name: create a user
+    ansible.builtin.user:
+      name: roboshop
+      home: /app
+      shell: /sbin/nologin
+      system: true
 
 
-  # - name: download the shipping code
-    # ansible.builtin.get_url:
-      # url: https://roboshop-artifacts.s3.amazonaws.com/shipping-v3.zip 
-      # dest: /tmp/shipping.zip
+  - name: download the shipping code
+    ansible.builtin.get_url:
+      url: https://roboshop-artifacts.s3.amazonaws.com/shipping-v3.zip 
+      dest: /tmp/shipping.zip
 
-  # - name: unarchive the shipping code
-    # ansible.builtin.unarchive:
-      # src: /tmp/shipping.zip
-      # dest: /app
-      # remote_src: yes 
+  - name: unarchive the shipping code
+    ansible.builtin.unarchive:
+      src: /tmp/shipping.zip
+      dest: /app
+      remote_src: yes 
 
-  # - name: install maven dependencies 
-    # ansible.builtin.command: mvn clean package
-    # args: 
-      # chdir: /app
+  - name: install maven dependencies 
+    ansible.builtin.command: mvn clean package
+    args: 
+      chdir: /app
 
-  # - name: rename jar file
-    # ansible.builtin.command: mv target/shipping-1.0.jar shipping.jar
-    # args: 
-      # chdir: /app
+  - name: rename jar file
+    ansible.builtin.command: mv target/shipping-1.0.jar shipping.jar
+    args: 
+      chdir: /app
 
-  # - name: copy the shipping service 
-    # ansible.builtin.copy:
-      # src: shipping.service
-      # dest: /etc/systemd/system/shipping.service
+  - name: copy the shipping service 
+    ansible.builtin.copy:
+      src: shipping.service
+      dest: /etc/systemd/system/shipping.service
 
-  # - name: reload the systemd service
-    # ansible.builtin.systemd_service:
-      # daemon_reload: true
+  - name: reload the systemd service
+    ansible.builtin.systemd_service:
+      daemon_reload: true
 
-  # - name: start and enable shipping service 
-    # ansible.builtin.service:
-      # name: shipping
-      # state: started
-      # enabled: yes 
+  - name: start and enable shipping service 
+    ansible.builtin.service:
+      name: shipping
+      state: started
+      enabled: yes 
 
   # - name: import data 
     # tags:
